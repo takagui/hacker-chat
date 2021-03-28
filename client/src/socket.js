@@ -7,6 +7,10 @@ export class SocketClient {
     this.port = port;
   }
 
+  sendMessage(event, message) {
+    this.#serverConnection.write(JSON.stringify({ event, message }));
+  }
+
   async createConnection() {
     const options = {
       port: this.port,
